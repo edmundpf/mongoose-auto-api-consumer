@@ -1,9 +1,10 @@
 a = require('axios')
 
 try
-	serverConfig = require('../../../../appConfig.json')
+	serverConfig = require('../../appConfig.json')
 catch error
-	serverConfig = require('../data/defaultConfig.json')
+	console.log('Could not find app config file.')
+	process.exit(1)
 
 url = "http://localhost:#{serverConfig.serverPort}"
 
