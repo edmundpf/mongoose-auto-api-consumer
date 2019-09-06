@@ -1,0 +1,47 @@
+{
+	"name": "mongoose-auto-api.consumer",
+	"version": "0.0.1",
+	"description": "Automatic Mongoose REST API - API Consumption Module",
+	"main": "./js/index.js",
+	"files": [
+		"/js"
+	],
+	"scripts": {
+		"start": "node ./js",
+		"test": "./node_modules/.bin/mocha js/tests",
+		"compile": "grunt sync"
+	},
+	"author": "Edmund Pfeil {edmundpf@buffalo.edu}",
+	"homepage": "https://github.com/edmundpf/mongoose-auto-api-consumer",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/edmundpf/mongoose-auto-api-consumer"
+	},
+	"keywords": [
+		"mongoose",
+		"schema",
+		"models",
+		"api",
+		"rest",
+		"restful",
+		"auto",
+		"automatic",
+		"bootstrap",
+		"starter",
+		"template"
+	],
+	"license": "MIT",
+	"dependencies": {
+		"axios": "^0.19.0"
+	},
+	"devDependencies": {
+		"chai": "*",
+		"grunt": "*",
+		"grunt-contrib-clean": "*",
+		"grunt-contrib-coffee": "*",
+		"grunt-contrib-copy": "*",
+		"grunt-contrib-watch": "*",
+		"mocha": "*",
+		"mongoose-auto-api.rest": "0.0.7"
+	}
+}
