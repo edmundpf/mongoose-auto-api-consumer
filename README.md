@@ -13,3 +13,34 @@
 ``` bash
 $ consumer = require('mongoose-auto-api.consumer')
 ```
+
+## Methods
+* URL Attribute i.e. *consumer.url*
+	* Gets API url
+* *setAuthToken*
+	* sets auth token for requests
+	* parm - *authToken* (str)
+* Collection methods
+	* parms - *collection* (str), *args* (obj)
+		* collection denotes the mongoose collection name, args are url query parameters
+		* See [Rest API - mongoose-auto-api.rest](https://github.com/edmundpf/mongoose-auto-api-rest/blob/master/README.md#rest-api-details) for API query parameters
+	* **insert** -> /collection/insert
+	* **update** -> /collection/update
+	* **remove** -> /collection/delete
+	* **removeAll** -> /collection/delete_all
+	* **get** -> /collection/get
+	* **getAll** -> /collection/get_all
+	* **find** -> /collection/find
+	* **schemaInfo** -> /collection/schema
+	* **sterilize** -> /collection/sterilize
+	* **updatePush** -> /collection/push
+	* **updatePushUnique** -> /collection/push_unique
+	* **updateSet** -> /collection/set
+* Auth methods
+	* parms - *args* (obj)
+		* args are url query parameters, see Rest API link above for query parameters
+	* **setSecretKey** -> /secret_key/insert
+	* **login** -> /login
+	* **signup** -> /signup
+	* **updatePassword** -> /update_password
+	* **verifyToken** -> /verify_token
