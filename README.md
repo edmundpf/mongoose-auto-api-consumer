@@ -39,7 +39,7 @@ $ consumer = require('mongoose-auto-api.consumer')
 * Auth methods
 	* parms - *args* (obj)
 		* args are url query parameters, see Rest API link above for query parameters
-	* **setSecretKey** -> /secret_key/insert
+	* **setSecretKey** -> /update_secret_key
 	* **login** -> /login
 	* **signup** -> /signup
 	* **updatePassword** -> /update_password

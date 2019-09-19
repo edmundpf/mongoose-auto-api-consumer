@@ -9,7 +9,7 @@ url = ''
 USERNAME = 'user@email.com'
 PASSWORD1 = 'testPass1!'
 PASSWORD2 = 'testPass2!'
-SECRET_KEY = 'secretKeyTest'
+SECRET_KEY = 'secretKeyTest1!'
 ACCESS_TOKEN = ''
 
 customerModel = """

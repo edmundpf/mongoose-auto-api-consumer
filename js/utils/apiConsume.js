@@ -163,7 +163,7 @@ Controller = class Controller {
 
   //: Set Secret Key
   async setSecretKey(args) {
-    return (await postReq('/secret_key/insert', args));
+    return (await postReq('/update_secret_key', args));
   }
 
   //: Login

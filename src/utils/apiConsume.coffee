@@ -227,7 +227,7 @@ class Controller
 
 	setSecretKey: (args) ->
 		return await postReq(
-			'/secret_key/insert'
+			'/update_secret_key'
 			args
 		)
 
