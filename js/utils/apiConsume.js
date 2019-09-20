@@ -90,7 +90,11 @@ deleteReq = async function(endpoint, args) {
 
 //::: CONTROLLER CLASS :::
 Controller = class Controller {
-  constructor() {
+  constructor(args) {
+    if ((args != null) && (args.port != null)) {
+      this.port = args.port;
+      url = `http://localhost:${this.port}`;
+    }
     this.url = url;
   }
 

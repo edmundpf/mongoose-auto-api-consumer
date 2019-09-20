@@ -93,7 +93,10 @@ deleteReq = (endpoint, args) ->
 #::: CONTROLLER CLASS :::
 
 class Controller
-	constructor: () ->
+	constructor: (args) ->
+		if args? and args.port?
+			this.port = args.port
+			url = "http://localhost:#{this.port}"
 		this.url = url
 
 	#: Set Auth Token

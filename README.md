@@ -17,6 +17,8 @@ $ consumer = require('mongoose-auto-api.consumer')
 ## Methods
 * URL Attribute i.e. *consumer.url*
 	* Gets API url
+* Port Attribute i.e. *consumer.port*
+	* Gets API port
 * *setAuthToken*
 	* sets auth token for requests
 	* parm - *authToken* (str)

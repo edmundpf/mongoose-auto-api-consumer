@@ -1,6 +1,6 @@
 {
 	"name": "mongoose-auto-api.consumer",
-	"version": "0.0.8",
+	"version": "0.0.9",
 	"description": "Automatic Mongoose REST API - API Consumption Module",
 	"main": "./js/index.js",
 	"files": [
