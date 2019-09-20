@@ -329,6 +329,26 @@ describe('Cleanup', function() {
   });
 });
 
+//: Set Port
+describe('setPort', function() {
+  it('Invalid - returns false', function() {
+    var res;
+    res = c.setPort('test');
+    return assert.equal(res, false);
+  });
+  it('Valid - returns true', function() {
+    var res;
+    res = c.setPort(5000);
+    return assert.equal(res, true);
+  });
+  it('Correct Port', function() {
+    return assert.equal(c.port, 5000);
+  });
+  return it('Correct URL', function() {
+    return assert.equal(c.url, "http://localhost:5000");
+  });
+});
+
 after(function(done) {
   var key, val;
   for (key in models) {

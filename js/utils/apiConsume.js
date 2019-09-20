@@ -91,11 +91,25 @@ deleteReq = async function(endpoint, args) {
 //::: CONTROLLER CLASS :::
 Controller = class Controller {
   constructor(args) {
-    if ((args != null) && (args.port != null)) {
-      this.port = args.port;
+    if ((args != null) && (args.port != null) && !isNaN(args.port)) {
+      this.port = Number(args.port);
       url = `http://localhost:${this.port}`;
+    } else {
+      this.port = serverConfig.serverPort;
     }
     this.url = url;
+  }
+
+  //: Set Port
+  setPort(port) {
+    if (!isNaN(port)) {
+      this.port = Number(port);
+      url = `http://localhost:${this.port}`;
+      this.url = url;
+      return true;
+    } else {
+      return false;
+    }
   }
 
   //: Set Auth Token

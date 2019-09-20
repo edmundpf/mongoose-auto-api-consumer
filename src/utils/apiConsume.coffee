@@ -94,10 +94,23 @@ deleteReq = (endpoint, args) ->
 
 class Controller
 	constructor: (args) ->
-		if args? and args.port?
-			this.port = args.port
+		if args? and args.port? and !isNaN(args.port)
+			this.port = Number(args.port)
 			url = "http://localhost:#{this.port}"
+		else
+			this.port = serverConfig.serverPort
 		this.url = url
+
+	#: Set Port
+
+	setPort: (port) ->
+		if !isNaN(port)
+			this.port = Number(port)
+			url = "http://localhost:#{this.port}"
+			this.url = url
+			return true
+		else
+			return false
 
 	#: Set Auth Token
 

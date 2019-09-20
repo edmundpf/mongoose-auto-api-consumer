@@ -429,6 +429,21 @@ describe 'Cleanup', ->
 			deletedCount: 1
 		)
 
+#: Set Port
+
+describe 'setPort', ->
+
+	it 'Invalid - returns false', ->
+		res = c.setPort('test')
+		assert.equal(res, false)
+	it 'Valid - returns true', ->
+		res = c.setPort(5000)
+		assert.equal(res, true)
+	it 'Correct Port', ->
+		assert.equal(c.port, 5000)
+	it 'Correct URL', ->
+		assert.equal(c.url, "http://localhost:5000")
+
 after((done) ->
 	for key, val of models
 		if fs.existsSync(key)
