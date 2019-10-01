@@ -1,4 +1,4 @@
-var ACCESS_TOKEN, PASSWORD1, PASSWORD2, SECRET_KEY, USERNAME, assert, c, consumer, customerModel, fs, infoModel, lineBreak, models, okayAssert, okayExistsAssert, productModel, should, url;
+var ACCESS_TOKEN, PASSWORD1, PASSWORD2, SECRET_KEY, USERNAME, assert, c, consumer, customerModel, fs, host, infoModel, lineBreak, models, okayAssert, okayExistsAssert, productModel, should, url;
 
 fs = require('fs');
 
@@ -9,6 +9,8 @@ assert = require('chai').assert;
 should = require('chai').should();
 
 c = new consumer();
+
+host = 'localhost';
 
 url = '';
 
@@ -48,7 +50,8 @@ before(function(done) {
     }
   }
   api = require('mongoose-auto-api.rest');
-  url = `http://localhost:${api.config.serverPort}`;
+  host = api.config.serverAddress;
+  url = `http://${host}:${api.config.serverPort}`;
   return done();
 });
 
@@ -345,7 +348,7 @@ describe('setPort', function() {
     return assert.equal(c.port, 5000);
   });
   return it('Correct URL', function() {
-    return assert.equal(c.url, "http://localhost:5000");
+    return assert.equal(c.url, `http://${host}:5000`);
   });
 });
 

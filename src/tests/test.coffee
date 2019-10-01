@@ -4,6 +4,7 @@ assert = require('chai').assert
 should = require('chai').should()
 
 c = new consumer()
+host = 'localhost'
 url = ''
 
 USERNAME = 'user@email.com'
@@ -90,7 +91,8 @@ before((done) ->
 				"module.exports = #{val}"
 			)
 	api = require('mongoose-auto-api.rest')
-	url = "http://localhost:#{api.config.serverPort}"
+	host = api.config.serverAddress
+	url = "http://#{host}:#{api.config.serverPort}"
 	done()
 )
 
@@ -442,7 +444,7 @@ describe 'setPort', ->
 	it 'Correct Port', ->
 		assert.equal(c.port, 5000)
 	it 'Correct URL', ->
-		assert.equal(c.url, "http://localhost:5000")
+		assert.equal(c.url, "http://#{host}:5000")
 
 after((done) ->
 	for key, val of models
