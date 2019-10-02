@@ -80,7 +80,7 @@ models =
 
 #: Before Hook
 
-before((done) ->
+before(() ->
 	this.timeout(10000)
 	if !fs.existsSync('./models')
 		fs.mkdirSync('./models')
@@ -91,9 +91,9 @@ before((done) ->
 				"module.exports = #{val}"
 			)
 	api = require('mongoose-auto-api.rest')
+	await api.start()
 	host = api.config.serverAddress
 	url = "http://#{host}:#{api.config.serverPort}"
-	done()
 )
 
 #: Okay Assert

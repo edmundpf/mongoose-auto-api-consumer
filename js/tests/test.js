@@ -37,7 +37,7 @@ models = {
 };
 
 //: Before Hook
-before(function(done) {
+before(async function() {
   var api, key, val;
   this.timeout(10000);
   if (!fs.existsSync('./models')) {
@@ -50,9 +50,9 @@ before(function(done) {
     }
   }
   api = require('mongoose-auto-api.rest');
+  await api.start();
   host = api.config.serverAddress;
-  url = `http://${host}:${api.config.serverPort}`;
-  return done();
+  return url = `http://${host}:${api.config.serverPort}`;
 });
 
 //: Okay Assert
