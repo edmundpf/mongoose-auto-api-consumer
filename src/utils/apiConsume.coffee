@@ -9,7 +9,10 @@ catch error
 		console.log('Could not find app config file.')
 		process.exit(1)
 
-url = "http://#{serverConfig.serverAddress}:#{serverConfig.serverPort}"
+if serverConfig.serverAddress != 'localhost'
+	url = "https://#{serverConfig.serverAddress}:#{serverConfig.serverPort}"
+else
+	url = "http://#{serverConfig.serverAddress}:#{serverConfig.serverPort}"
 
 #::: HELPERS :::
 
@@ -96,7 +99,10 @@ class Controller
 	constructor: (args) ->
 		if args? and args.port? and !isNaN(args.port)
 			this.port = Number(args.port)
-			url = "http://#{serverConfig.serverAddress}:#{this.port}"
+			if serverConfig.serverAddress != 'localhost'
+				url = "https://#{serverConfig.serverAddress}:#{this.port}"
+			else
+				url = "http://#{serverConfig.serverAddress}:#{this.port}"
 		else
 			this.port = serverConfig.serverPort
 		this.url = url
@@ -106,7 +112,10 @@ class Controller
 	setPort: (port) ->
 		if !isNaN(port)
 			this.port = Number(port)
-			url = "http://#{serverConfig.serverAddress}:#{this.port}"
+			if serverConfig.serverAddress != 'localhost'
+				url = "https://#{serverConfig.serverAddress}:#{this.port}"
+			else
+				url = "http://#{serverConfig.serverAddress}:#{this.port}"
 			this.url = url
 			return true
 		else

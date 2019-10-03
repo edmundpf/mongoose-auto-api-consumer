@@ -1,4 +1,4 @@
-var ACCESS_TOKEN, PASSWORD1, PASSWORD2, SECRET_KEY, USERNAME, assert, c, consumer, customerModel, fs, host, infoModel, lineBreak, models, okayAssert, okayExistsAssert, productModel, should, url;
+var ACCESS_TOKEN, PASSWORD1, PASSWORD2, SECRET_KEY, USERNAME, assert, c, consumer, customerModel, fs, host, infoModel, lineBreak, method, models, okayAssert, okayExistsAssert, productModel, should, url;
 
 fs = require('fs');
 
@@ -12,7 +12,7 @@ c = new consumer();
 
 host = 'localhost';
 
-url = '';
+url = method = '';
 
 USERNAME = 'user@email.com';
 
@@ -52,7 +52,12 @@ before(async function() {
   api = require('mongoose-auto-api.rest');
   await api.start();
   host = api.config.serverAddress;
-  return url = `http://${host}:${api.config.serverPort}`;
+  if (host !== 'localhost') {
+    method = 'https';
+  } else {
+    method = 'http';
+  }
+  return url = `${method}://${host}:${api.config.serverPort}`;
 });
 
 //: Okay Assert
@@ -348,7 +353,7 @@ describe('setPort', function() {
     return assert.equal(c.port, 5000);
   });
   return it('Correct URL', function() {
-    return assert.equal(c.url, `http://${host}:5000`);
+    return assert.equal(c.url, `${method}://${host}:5000`);
   });
 });
 
