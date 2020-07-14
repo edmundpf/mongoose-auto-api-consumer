@@ -1,4 +1,4 @@
-var Controller, a, collectionReq, deleteReq, error, getReq, postReq, request, serverConfig, url, urlStr;
+var Controller, a, collectionReq, deleteReq, error, getReq, postReq, request, serverConfig, serverPort, url, urlStr;
 
 a = require('axios');
 
@@ -15,10 +15,12 @@ try {
   }
 }
 
+serverPort = process.env.NODE_ENV === 'production' ? process.env.PORT || serverConfig.serverPort : serverConfig.serverPort + 10;
+
 if (serverConfig.serverAddress !== 'localhost') {
-  url = `https://${serverConfig.serverAddress}:${serverConfig.serverPort}`;
+  url = `https://${serverConfig.serverAddress}:${serverPort}`;
 } else {
-  url = `http://${serverConfig.serverAddress}:${serverConfig.serverPort}`;
+  url = `http://${serverConfig.serverAddress}:${serverPort}`;
 }
 
 //::: HELPERS :::

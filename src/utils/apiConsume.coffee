@@ -9,10 +9,12 @@ catch error
 		console.log('Could not find app config file.')
 		process.exit(1)
 
+serverPort = if process.env.NODE_ENV == 'production' then process.env.PORT || serverConfig.serverPort else serverConfig.serverPort + 10
+
 if serverConfig.serverAddress != 'localhost'
-	url = "https://#{serverConfig.serverAddress}:#{serverConfig.serverPort}"
+	url = "https://#{serverConfig.serverAddress}:#{serverPort}"
 else
-	url = "http://#{serverConfig.serverAddress}:#{serverConfig.serverPort}"
+	url = "http://#{serverConfig.serverAddress}:#{serverPort}"
 
 #::: HELPERS :::
 

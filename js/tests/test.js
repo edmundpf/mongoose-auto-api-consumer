@@ -38,7 +38,7 @@ models = {
 
 //: Before Hook
 before(async function() {
-  var api, key, val;
+  var api, key, serverPort, val;
   this.timeout(10000);
   if (!fs.existsSync('./models')) {
     fs.mkdirSync('./models');
@@ -52,12 +52,13 @@ before(async function() {
   api = require('mongoose-auto-api.rest');
   await api.start();
   host = api.config.serverAddress;
+  serverPort = process.env.NODE_ENV === 'production' ? process.env.PORT || api.config.serverPort : api.config.serverPort + 10;
   if (host !== 'localhost') {
     method = 'https';
   } else {
     method = 'http';
   }
-  return url = `${method}://${host}:${api.config.serverPort}`;
+  return url = `${method}://${host}:${serverPort}`;
 });
 
 //: Okay Assert

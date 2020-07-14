@@ -93,11 +93,12 @@ before(() ->
 	api = require('mongoose-auto-api.rest')
 	await api.start()
 	host = api.config.serverAddress
+	serverPort = if process.env.NODE_ENV == 'production' then process.env.PORT || api.config.serverPort else api.config.serverPort + 10
 	if host != 'localhost'
 		method = 'https'
 	else
 		method = 'http'
-	url = "#{method}://#{host}:#{api.config.serverPort}"
+	url = "#{method}://#{host}:#{serverPort}"
 )
 
 #: Okay Assert
