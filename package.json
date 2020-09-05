@@ -4,7 +4,8 @@
 	"description": "Automatic Mongoose REST API - API Consumption Module",
 	"main": "./js/index.js",
 	"files": [
-		"/js"
+		"/js/utils",
+		"/js/index.js"
 	],
 	"scripts": {
 		"start": "node ./js",
