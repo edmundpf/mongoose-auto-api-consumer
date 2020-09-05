@@ -1,17 +1,13 @@
 a = require('axios')
-join = require('path').join
-resolve = require('path').resolve
-existsSync = require('fs').existsSync
 
-rootConfigLoc = join(__dirname, '../../../../appConfig.json')
-localConfigLoc = join(__dirname, '../../appConfig.json')
-if existsSync(rootConfigLoc)
+try
 	serverConfig = require('../../../../appConfig.json')
-else if existsSync(localConfigLoc)
-	serverConfig = require('../../appConfig.json')
-else
-	console.log('Could not find app config file.')
-	process.exit(1)
+catch error
+	try
+		serverConfig = require('../../appConfig.json')
+	catch error
+		console.log('Could not find app config file.')
+		process.exit(1)
 
 serverPort = if process.env.NODE_ENV == 'production' then process.env.PORT || serverConfig.serverPort else serverConfig.serverPort + 10
 
