@@ -42,6 +42,6 @@
 		"grunt-contrib-copy": "*",
 		"grunt-contrib-watch": "*",
 		"mocha": "*",
-		"mongoose-auto-api.rest": "^1.0.5"
+		"mongoose-auto-api.rest": "^2.0.4"
 	}
 }

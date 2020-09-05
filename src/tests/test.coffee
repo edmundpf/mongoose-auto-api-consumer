@@ -90,7 +90,7 @@ before(() ->
 				key,
 				"module.exports = #{val}"
 			)
-	api = require('mongoose-auto-api.rest')
+	api = require('mongoose-auto-api.rest').default
 	await api.start()
 	host = api.config.serverAddress
 	serverPort = if process.env.NODE_ENV == 'production' then process.env.PORT || api.config.serverPort else api.config.serverPort + 10

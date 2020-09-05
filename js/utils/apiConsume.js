@@ -1,18 +1,24 @@
-var Controller, a, collectionReq, deleteReq, error, getReq, postReq, request, serverConfig, serverPort, url, urlStr;
+var Controller, a, collectionReq, deleteReq, existsSync, getReq, join, localConfigLoc, postReq, request, resolve, rootConfigLoc, serverConfig, serverPort, url, urlStr;
 
 a = require('axios');
 
-try {
+join = require('path').join;
+
+resolve = require('path').resolve;
+
+existsSync = require('fs').existsSync;
+
+rootConfigLoc = join(__dirname, '../../../../appConfig.json');
+
+localConfigLoc = join(__dirname, '../../appConfig.json');
+
+if (existsSync(rootConfigLoc)) {
   serverConfig = require('../../../../appConfig.json');
-} catch (error1) {
-  error = error1;
-  try {
-    serverConfig = require('../../appConfig.json');
-  } catch (error1) {
-    error = error1;
-    console.log('Could not find app config file.');
-    process.exit(1);
-  }
+} else if (existsSync(localConfigLoc)) {
+  serverConfig = require('../../appConfig.json');
+} else {
+  console.log('Could not find app config file.');
+  process.exit(1);
 }
 
 serverPort = process.env.NODE_ENV === 'production' ? process.env.PORT || serverConfig.serverPort : serverConfig.serverPort + 10;
@@ -27,7 +33,7 @@ if (serverConfig.serverAddress !== 'localhost') {
 
 // Request
 request = async function(reqUrl, func) {
-  var res;
+  var error, res;
   try {
     res = (await func(reqUrl));
     return {

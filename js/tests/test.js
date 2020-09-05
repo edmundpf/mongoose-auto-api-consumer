@@ -49,7 +49,7 @@ before(async function() {
       fs.writeFileSync(key, `module.exports = ${val}`);
     }
   }
-  api = require('mongoose-auto-api.rest');
+  api = require('mongoose-auto-api.rest').default;
   await api.start();
   host = api.config.serverAddress;
   serverPort = process.env.NODE_ENV === 'production' ? process.env.PORT || api.config.serverPort : api.config.serverPort + 10;
